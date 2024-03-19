@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WarehouseManager.Data;
 using WarehouseManager.Entities;
 
@@ -15,19 +16,17 @@ namespace WarehouseManager.Controllers
             _context = context;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Item>> GetItem() // List of items
+        public async Task <ActionResult<IEnumerable<Item>>> GetItem() // List of items
         {
-            var items = _context.Items;
+            var items = await _context.Items.ToListAsync();
             return items;
         }
 
         [HttpGet("{id}")] // Specific item
 
-        public ActionResult<Item> GetItem(int id)
+        public async Task <ActionResult<Item>> GetItem(int id)
         {
-            var item = _context.Items.Find(id);
-
-            return item;
+            return await _context.Items.FindAsync(id);
         }
     }
 }

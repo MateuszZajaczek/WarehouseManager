@@ -39,5 +39,32 @@ namespace WarehouseManager
 
             app.Run();
         }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // ...
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularDevOrigin", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200") // Replace with the actual port Angular is running on
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
+            // ...
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            // ...
+
+            app.UseCors("AllowAngularDevOrigin"); // Make sure this is before UseEndpoints
+
+            // ...
+        }
+
     }
 }

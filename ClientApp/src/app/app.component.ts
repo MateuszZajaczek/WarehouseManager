@@ -1,30 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
+  /*standalone: true,*/
+  /*imports: [RouterOutlet, HttpClientModule],*/
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Warehouse Manager';
-  items: any;
+export class AppComponent { }
+  
 
-
-  constructor(private http: HttpClient) { }
-
-
-  ngOnInit(): void {
-    this.http.get('https://localhost:7025/Item').subscribe({
-      next: response => this.items = response,
-      error: error => console.log(error),
-      complete: () => console.log('Request has completed')
-    })
-  }
-
-
-
-}

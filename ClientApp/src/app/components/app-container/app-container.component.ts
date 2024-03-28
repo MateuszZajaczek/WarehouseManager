@@ -8,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app-container.component.css']
 })
 export class AppContainer implements OnInit {
-  title = 'Warehouse Manager';
+  title = 'Warehouse Manager v1.0';
   items: any;
 
   constructor(private http: HttpClient) { }

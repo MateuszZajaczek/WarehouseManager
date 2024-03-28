@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-list',
   /*standalone: true,*/
   /*imports: [RouterOutlet, HttpClientModule],*/
   templateUrl: './app.component.html',
